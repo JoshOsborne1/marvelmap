@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCU Timeline | Our Marvel Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="timeline.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">M</div>
+                <span class="logo-text">MCU Tracker</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="timeline.html" class="nav-link active">Timeline</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="timeline-page">
+        <div class="timeline-hero">
+            <h1 class="timeline-title">The Complete MCU Timeline</h1>
+            <p class="timeline-subtitle">Every film & series in chronological release order. Your essential watches are
+                highlighted.</p>
+            <div class="timeline-legend">
+                <span class="legend-item essential"><span class="dot"></span> Essential (Your List)</span>
+                <span class="legend-item watched"><span class="dot"></span> Watched</span>
+                <span class="legend-item optional"><span class="dot"></span> Optional Context</span>
+            </div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-items" id="timelineItems"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Our MCU Journey Together <span class="hearts">❤️</span></p>
+    </footer>
+
+    <div class="timeline-modal-overlay" id="timelineModal">
+        <div class="timeline-modal">
+            <button class="modal-close" onclick="closeTimelineModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+            <div class="timeline-modal-content" id="timelineModalContent"></div>
+        </div>
+    </div>
+
+    <script src="timeline.js"></script>
+</body>
+
+</html>
