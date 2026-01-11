@@ -9,8 +9,8 @@ const timelineData = [
 
     {
         id: 2, title: "The Incredible Hulk", year: 2008, type: "film", essential: false,
-        poster: "https://image.tmdb.org/t/p/w500/gKzYx79y0AQTL4UAk1cBPJ3unk1.jpg",
-        backdrop: "https://image.tmdb.org/t/p/w1280/eiLOTjVwjSFsVNqT5sxLgQgpARw.jpg",
+        poster: "https://image.tmdb.org/t/p/w500/dLxJFpJVL1G3HpAd8z2gUyBFqch.jpg",
+        backdrop: "https://image.tmdb.org/t/p/w1280/9i1YyN1UpFmIiBAJXc86fQK3A4.jpg",
         summary: "Bruce Banner, on the run from the military, seeks a cure for his Hulk transformations. General Thaddeus 'Thunderbolt' Ross pursues him relentlessly, leading to the creation of the Abomination.",
         takeaways: ["Establishes Bruce Banner/Hulk's origin and fugitive status", "Introduces General Ross (later becomes Red Hulk in Phase 5)", "Tony Stark cameo hints at team-building", "Mostly standalone but Ross returns in later films"]
     },
@@ -144,6 +144,7 @@ const timelineData = [
     {
         id: 21, title: "Captain Marvel", year: 2019, type: "film", essential: false,
         poster: "https://image.tmdb.org/t/p/w500/AtsgWhDnHTq68L0wLsHyzbh4Elq.jpg",
+        backdrop: "https://image.tmdb.org/t/p/w1280/w2PMyoyLU22YvrGK3smVM9fW1jj.jpg",
         summary: "Set in 1995, Kree warrior Vers discovers she's actually Carol Danvers, a human Air Force pilot. She uncovers the truth about the Kree-Skrull war.",
         takeaways: ["Carol Danvers becomes Captain Marvel", "Set in 1995 - origin story", "Skrulls revealed as refugees, not villains", "Nick Fury loses eye to Flerken cat"]
     },
@@ -158,6 +159,7 @@ const timelineData = [
     {
         id: 23, title: "Spider-Man: Far From Home", year: 2019, type: "film", essential: true,
         poster: "https://image.tmdb.org/t/p/w500/4q2NNj4S5dG2RLF9CpXsT8xjrGK.jpg",
+        backdrop: "https://image.tmdb.org/t/p/w1280/dqB7k0g2F5zUsadAuyrOrxDyPBD.jpg",
         summary: "Peter Parker goes on a European school trip but is recruited by Nick Fury to fight the Elementals alongside Mysterio. He discovers not everything is as it seems.",
         takeaways: ["Post-Endgame world dealing with the Blip", "Peter inherits Tony's glasses (EDITH)", "Mysterio revealed as disgruntled ex-Stark employee", "Peter's identity exposed to the world in post-credits"]
     },
@@ -234,7 +236,8 @@ const timelineData = [
 
     {
         id: 34, title: "Ms. Marvel", year: 2022, type: "series", essential: false,
-        poster: "https://image.tmdb.org/t/p/w500/el2pVCS2WCjFDhgM5qXbGbDSlE8.jpg",
+        poster: "https://image.tmdb.org/t/p/w500/8aLEfKCS6aKP8UsoEIgpsmwcxsR.jpg",
+        backdrop: "https://image.tmdb.org/t/p/w1280/yU4efqcLfHy27VyiZeUUmGUJU31.jpg",
         summary: "Pakistani-American teen Kamala Khan discovers she has cosmic powers linked to a magical bangle and her family's djinn heritage.",
         takeaways: ["Kamala Khan gains crystalline energy powers", "Muslim-American representation", "Post-credits: Kamala swaps places with Captain Marvel", "Sets up The Marvels"]
     },
@@ -283,7 +286,8 @@ const timelineData = [
 
     {
         id: 41, title: "The Marvels", year: 2023, type: "film", essential: false,
-        poster: "https://image.tmdb.org/t/p/w500/Ag3D9qXpQbczruVyY8owYFepCFD.jpg",
+        poster: "https://image.tmdb.org/t/p/w500/9GBhzXMFjgcZ3FdR9w3bUmmfigg.jpg",
+        backdrop: "https://image.tmdb.org/t/p/w1280/4Ep2KivIBzIF6FMq682R3bdfeoB.jpg",
         summary: "Captain Marvel, Ms. Marvel, and Monica Rambeau find themselves swapping places when using their powers and team up against Kree villain Dar-Benn.",
         takeaways: ["Carol, Kamala, and Monica team up", "Power-swapping whenever they use abilities", "Dar-Benn destroying worlds for resources", "Monica trapped in alternate universe at end"]
     },
@@ -297,14 +301,16 @@ const timelineData = [
 
     {
         id: 43, title: "Echo", year: 2024, type: "series", essential: false,
-        poster: "https://image.tmdb.org/t/p/w500/vFyJH630cF8JGJhMNV33a3Epvnm.jpg",
+        poster: "https://image.tmdb.org/t/p/w500/vBZ0VGnVXuAeMvVxl2xKDIfvVBj.jpg",
+        backdrop: "https://image.tmdb.org/t/p/w1280/uGEAwELQTuAhakVFKoXfz7n1OLV.jpg",
         summary: "Maya Lopez returns to her hometown in Oklahoma, confronting her past with Kingpin while discovering her family's Choctaw heritage.",
         takeaways: ["Maya's indigenous heritage and powers", "Kingpin's past and relationship with Maya", "First 'Marvel Spotlight' series", "Sets up Daredevil: Born Again"]
     },
 
     {
         id: 44, title: "Agatha All Along", year: 2024, type: "series", essential: false,
-        poster: "https://image.tmdb.org/t/p/w500/1sSOJzPrnJE9xnkQuCqy9iZvfvh.jpg",
+        poster: "https://image.tmdb.org/t/p/w500/1VxfzV5jHD5P7Vw8qCvXzF1G9XB.jpg",
+        backdrop: "https://image.tmdb.org/t/p/w1280/aRPi7YBsEuFB6oNRX2RQKkDANf7.jpg",
         summary: "Agatha Harkness, depowered after WandaVision, forms a coven to walk the Witches' Road and regain her magic.",
         takeaways: ["Agatha seeks to restore her powers", "Billy Maximoff (Wiccan) revealed to be reincarnated", "Witches' Road magical journey", "Sets up future Young Avengers"]
     },
@@ -325,7 +331,8 @@ const timelineData = [
 
     {
         id: 47, title: "Thunderbolts*", year: 2025, type: "film", essential: true,
-        poster: "https://image.tmdb.org/t/p/w500/jyv2aXqdCGVYbSqq9DkUrZNDbE7.jpg",
+        poster: "https://image.tmdb.org/t/p/w500/jvKSqojjuxAkSkwmcVF4TN2qUJm.jpg",
+        backdrop: "https://image.tmdb.org/t/p/w1280/4iQkzSWKbBwN0ib1tABIizPo0Ng.jpg",
         summary: "Valentina Allegra de Fontaine assembles a team of anti-heroes including Yelena, Bucky, Ghost, US Agent, and Taskmaster.",
         takeaways: ["Anti-hero team assembled by Valentina", "'Present day' MCU (2027 in-universe)", "Various reformed villains and operatives", "Sets stage for next Avengers movie"]
     }

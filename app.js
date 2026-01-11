@@ -259,6 +259,17 @@ const films = [
       { name: "Paul Bettany", character: "Vision", img: `${TMDB_IMG}/dpIL20lUrHfSorZxun2RGpC4t58.jpg` },
       { name: "Kathryn Hahn", character: "Agatha", img: `${TMDB_IMG}/bqo0lsXMpPXC5RiGFhvlKJKaMiN.jpg` }
     ],
+    episodes: [
+      { num: 1, title: "Filmed Before a Live Studio Audience", runtime: "30m" },
+      { num: 2, title: "Don't Touch That Dial", runtime: "36m" },
+      { num: 3, title: "Now in Color", runtime: "32m" },
+      { num: 4, title: "We Interrupt This Program", runtime: "35m" },
+      { num: 5, title: "On a Very Special Episode...", runtime: "42m" },
+      { num: 6, title: "All-New Halloween Spooktacular!", runtime: "38m" },
+      { num: 7, title: "Breaking the Fourth Wall", runtime: "38m" },
+      { num: 8, title: "Previously On", runtime: "47m" },
+      { num: 9, title: "The Series Finale", runtime: "50m" }
+    ],
     watched: false,
     essential: true,
     order: 12,
@@ -279,6 +290,14 @@ const films = [
       { name: "Tom Hiddleston", character: "Loki", img: `${TMDB_IMG}/mclHxMm8aPlCPKptP67257F5GPo.jpg` },
       { name: "Owen Wilson", character: "Mobius", img: `${TMDB_IMG}/rLS378g66srPeNvVjvVx00z1FB2.jpg` },
       { name: "Jonathan Majors", character: "He Who Remains", img: `${TMDB_IMG}/jWVn0ZNTXVG4sY6HqQHaQAq7WYw.jpg` }
+    ],
+    episodes: [
+      { num: 1, title: "Glorious Purpose", runtime: "51m" },
+      { num: 2, title: "The Variant", runtime: "54m" },
+      { num: 3, title: "Lamentis", runtime: "43m" },
+      { num: 4, title: "The Nexus Event", runtime: "47m" },
+      { num: 5, title: "Journey into Mystery", runtime: "50m" },
+      { num: 6, title: "For All Time. Always.", runtime: "49m" }
     ],
     watched: false,
     essential: true,
@@ -428,7 +447,8 @@ const films = [
     ],
     watched: false,
     essential: true,
-    order: 20
+    order: 20,
+    watchLink: "https://moviesgoo.com/movie/thunderbolts-MxU6lX-62aee8a4b8/"
   }
 ];
 
@@ -487,6 +507,45 @@ function loadWatchedState() {
 function saveWatchedState() {
   const watchedIds = films.filter(f => f.watched).map(f => f.id);
   localStorage.setItem('mcuTrackerWatched', JSON.stringify(watchedIds));
+}
+
+// Episode tracking for series
+function getWatchedEpisodes(filmId) {
+  const saved = localStorage.getItem(`mcuEpisodes_${filmId}`);
+  return saved ? JSON.parse(saved) : [];
+}
+
+function saveWatchedEpisodes(filmId, episodes) {
+  localStorage.setItem(`mcuEpisodes_${filmId}`, JSON.stringify(episodes));
+}
+
+function toggleEpisode(filmId, epNum) {
+  const watchedEps = getWatchedEpisodes(filmId);
+  const index = watchedEps.indexOf(epNum);
+
+  if (index > -1) {
+    watchedEps.splice(index, 1);
+  } else {
+    watchedEps.push(epNum);
+  }
+
+  saveWatchedEpisodes(filmId, watchedEps);
+
+  // Check if all episodes watched - mark series as watched
+  const film = films.find(f => f.id === filmId);
+  if (film && film.episodes) {
+    const allWatched = film.episodes.every(ep => watchedEps.includes(ep.num));
+    if (allWatched !== film.watched) {
+      film.watched = allWatched;
+      saveWatchedState();
+      renderUI();
+    }
+  }
+
+  // Re-render the episodes list
+  if (currentModalFilm && currentModalFilm.id === filmId) {
+    openModal(currentModalFilm);
+  }
 }
 
 // Render
@@ -657,6 +716,28 @@ function openModal(film) {
     } else {
       watchNowBtn.style.display = 'none';
     }
+  }
+
+  // Episodes section for series
+  const episodesSection = document.getElementById('modalEpisodesSection');
+  const episodesList = document.getElementById('modalEpisodes');
+  if (film.episodes && film.episodes.length) {
+    episodesSection.style.display = 'block';
+    const watchedEps = getWatchedEpisodes(film.id);
+    episodesList.innerHTML = film.episodes.map(ep => `
+      <div class="episode-item ${watchedEps.includes(ep.num) ? 'watched' : ''}" onclick="toggleEpisode(${film.id}, ${ep.num})">
+        <div class="episode-checkbox">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="episode-info">
+          <div class="episode-num">Episode ${ep.num}</div>
+          <div class="episode-title">${ep.title}</div>
+        </div>
+        <div class="episode-runtime">${ep.runtime}</div>
+      </div>
+    `).join('');
+  } else {
+    episodesSection.style.display = 'none';
   }
 
   document.getElementById('modalOverlay').classList.add('active');
