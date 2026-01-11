@@ -11,20 +11,38 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="timeline.css">
 </head>
 
 <body>
-    <header class="header" id="header">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">M</div>
-                <span class="logo-text">MCU Tracker</span>
-            </a>
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="timeline.html" class="nav-link active">Timeline</a>
-            </nav>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <canvas id="bgCanvas"></canvas>
+        <div class="bg-gradient-overlay"></div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="site-header" id="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <a href="index.html" class="site-logo">
+                    <div class="site-logo-icon">M</div>
+                    <span class="site-logo-text">MCU Tracker</span>
+                </a>
+                <nav class="site-nav">
+                    <a href="index.html" class="site-nav-link">Home</a>
+                    <a href="timeline.html" class="site-nav-link active">Timeline</a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="header-progress">
+                    <div class="header-progress-bar">
+                        <div class="header-progress-fill" id="progressBar" style="width: 10%"></div>
+                    </div>
+                    <span class="header-progress-text" id="progressText">2/20</span>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -50,7 +68,7 @@
         <p>Our MCU Journey Together <span class="hearts">❤️</span></p>
     </footer>
 
-    <div class="timeline-modal-overlay" id="timelineModal">
+    <div class="timeline-modal-overlay" id="timelineModal" onclick="if(event.target===this)closeTimelineModal()">
         <div class="timeline-modal">
             <button class="modal-close" onclick="closeTimelineModal()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"

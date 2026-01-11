@@ -1,30 +1,15 @@
-/* Timeline Page Styles */
-.nav-links {
-    display: flex;
-    gap: var(--space-lg);
-}
-
-.nav-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color var(--transition-fast);
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--marvel-red);
-}
+/* Timeline Page Styles - Fixed */
 
 .timeline-page {
     padding-top: 100px;
     min-height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
 .timeline-hero {
     text-align: center;
     padding: var(--space-2xl) var(--space-xl);
-    background: linear-gradient(180deg, rgba(230, 36, 41, 0.1) 0%, transparent 100%);
 }
 
 .timeline-title {
@@ -34,6 +19,7 @@
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--marvel-red) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 60px rgba(230, 36, 41, 0.3);
 }
 
 .timeline-subtitle {
@@ -90,9 +76,10 @@
     top: 0;
     bottom: 0;
     width: 4px;
-    background: linear-gradient(180deg, var(--marvel-red) 0%, var(--bg-card) 100%);
+    background: linear-gradient(180deg, var(--marvel-red) 0%, var(--bg-card) 50%, var(--marvel-red) 100%);
     transform: translateX(-50%);
     border-radius: 2px;
+    box-shadow: 0 0 20px var(--marvel-red-glow);
 }
 
 .timeline-items {
@@ -109,10 +96,12 @@
 
 .timeline-item:nth-child(odd) {
     flex-direction: row;
+    padding-right: calc(50% + 30px);
 }
 
 .timeline-item:nth-child(even) {
     flex-direction: row-reverse;
+    padding-left: calc(50% + 30px);
 }
 
 .timeline-item:nth-child(1) {
@@ -170,10 +159,10 @@
 .timeline-dot {
     position: absolute;
     left: 50%;
-    top: 30px;
-    width: 20px;
-    height: 20px;
-    background: var(--bg-card);
+    top: 40px;
+    width: 18px;
+    height: 18px;
+    background: var(--bg-primary);
     border: 4px solid var(--text-muted);
     border-radius: 50%;
     transform: translateX(-50%);
@@ -184,6 +173,7 @@
 .timeline-item.essential .timeline-dot {
     border-color: var(--marvel-red);
     box-shadow: 0 0 15px var(--marvel-red-glow);
+    background: var(--bg-primary);
 }
 
 .timeline-item.watched .timeline-dot {
@@ -192,39 +182,42 @@
 }
 
 .timeline-item:hover .timeline-dot {
-    transform: translateX(-50%) scale(1.3);
+    transform: translateX(-50%) scale(1.4);
 }
 
 .timeline-content {
-    width: calc(50% - 40px);
+    width: 100%;
     background: var(--bg-card);
     border-radius: var(--radius-lg);
     overflow: hidden;
     cursor: pointer;
     transition: all var(--transition-normal);
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .timeline-item.essential .timeline-content {
-    border-color: var(--marvel-red);
-    box-shadow: 0 0 20px rgba(230, 36, 41, 0.2);
+    border-color: rgba(230, 36, 41, 0.5);
+    box-shadow: 0 0 30px rgba(230, 36, 41, 0.15);
 }
 
 .timeline-content:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: var(--shadow-hover);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border-color: var(--marvel-red);
 }
 
 .timeline-poster {
     position: relative;
-    height: 150px;
+    height: 140px;
     overflow: hidden;
+    background: var(--bg-secondary);
 }
 
 .timeline-poster img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%;
     transition: transform var(--transition-normal);
 }
 
@@ -235,35 +228,48 @@
 .timeline-poster-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, var(--bg-card) 0%, transparent 100%);
+    background: linear-gradient(0deg, var(--bg-card) 0%, transparent 60%);
 }
 
+/* Fixed Badges - No Overlap */
 .timeline-badge {
     position: absolute;
-    top: var(--space-sm);
-    left: var(--space-sm);
-    padding: 4px 10px;
+    padding: 4px 8px;
     border-radius: var(--radius-sm);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 3;
 }
 
 .timeline-badge.essential-badge {
+    top: 8px;
+    left: 8px;
     background: var(--marvel-red);
     color: white;
 }
 
 .timeline-badge.watched-badge {
+    top: 8px;
+    right: 8px;
     background: #22c55e;
     color: white;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
 }
 
 .timeline-badge.series-badge {
+    bottom: 50px;
+    left: 8px;
     background: var(--marvel-blue);
     color: white;
-    right: var(--space-sm);
-    left: auto;
 }
 
 .timeline-info {
@@ -271,25 +277,25 @@
 }
 
 .timeline-year {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--marvel-red);
     font-weight: 700;
     margin-bottom: var(--space-xs);
 }
 
 .timeline-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     margin-bottom: var(--space-sm);
     line-height: 1.3;
 }
 
 .timeline-summary {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     line-height: 1.5;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -298,7 +304,7 @@
 .timeline-modal-overlay {
     position: fixed;
     inset: 0;
-    background: var(--bg-modal);
+    background: rgba(0, 0, 0, 0.9);
     z-index: 2000;
     display: flex;
     align-items: center;
@@ -307,6 +313,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
 }
 
 .timeline-modal-overlay.active {
@@ -317,17 +324,18 @@
 .timeline-modal {
     background: var(--bg-secondary);
     border-radius: var(--radius-xl);
-    max-width: 700px;
+    max-width: 600px;
     width: 100%;
     max-height: 85vh;
     overflow-y: auto;
     position: relative;
-    transform: scale(0.9);
+    transform: scale(0.9) translateY(20px);
     transition: transform var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .timeline-modal-overlay.active .timeline-modal {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
 }
 
 .timeline-modal .modal-close {
@@ -335,6 +343,22 @@
     top: var(--space-md);
     right: var(--space-md);
     z-index: 10;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.timeline-modal .modal-close:hover {
+    background: var(--marvel-red);
+    transform: scale(1.1);
 }
 
 .timeline-modal-content {
@@ -342,17 +366,17 @@
 }
 
 .modal-header-img {
-    width: 100%;
-    height: 200px;
+    width: calc(100% + var(--space-xl) * 2);
+    height: 180px;
     object-fit: cover;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    object-position: center 20%;
     margin: calc(var(--space-xl) * -1);
     margin-bottom: var(--space-lg);
-    width: calc(100% + var(--space-xl) * 2);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
 .modal-film-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 800;
     margin-bottom: var(--space-xs);
 }
@@ -363,13 +387,14 @@
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
 }
 
 .modal-film-summary {
     color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: var(--space-lg);
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .modal-takeaways {
@@ -382,7 +407,7 @@
 .modal-takeaways h4 {
     color: var(--marvel-red);
     margin-bottom: var(--space-md);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -398,6 +423,8 @@
     color: var(--text-secondary);
     padding-left: var(--space-md);
     position: relative;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .modal-takeaways li::before {
@@ -416,6 +443,7 @@
     color: var(--marvel-red);
     font-weight: 600;
     text-align: center;
+    font-size: 0.9rem;
 }
 
 /* Responsive */
@@ -425,8 +453,11 @@
     }
 
     .timeline-item,
+    .timeline-item:nth-child(odd),
     .timeline-item:nth-child(even) {
         flex-direction: row;
+        padding-left: 50px;
+        padding-right: 0;
     }
 
     .timeline-dot {
@@ -434,7 +465,14 @@
     }
 
     .timeline-content {
-        width: calc(100% - 50px);
-        margin-left: auto;
+        width: 100%;
+    }
+
+    .timeline-hero {
+        padding: var(--space-xl) var(--space-md);
+    }
+
+    .timeline-container {
+        padding: var(--space-xl) var(--space-md);
     }
 }

@@ -7,46 +7,45 @@
   <title>MCU Tracker | Our Marvel Journey</title>
   <meta name="description" content="Track your Marvel Cinematic Universe film journey together">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap"
     rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header.css">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="header-content">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">M</div>
-        <span class="logo-text">MCU Tracker</span>
-      </a>
-
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="timeline.html" class="nav-link">Timeline</a>
-      </nav>
-
-      <div class="progress-wrapper">
-        <div class="progress-bar-container">
-          <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
-        </div>
-        <span class="progress-text" id="progressText">0/0 Watched</span>
+  <!-- Site Header -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="index.html" class="site-logo">
+          <div class="site-logo-icon">M</div>
+          <span class="site-logo-text">MCU Tracker</span>
+        </a>
+        <nav class="site-nav">
+          <a href="index.html" class="site-nav-link active">Home</a>
+          <a href="timeline.html" class="site-nav-link">Timeline</a>
+        </nav>
       </div>
-
-      <div class="filter-group">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="watched">Watched</button>
-        <button class="filter-btn" data-filter="unwatched">To Watch</button>
+      <div class="header-right">
+        <div class="header-progress">
+          <div class="header-progress-bar">
+            <div class="header-progress-fill" id="progressBar" style="width: 0%"></div>
+          </div>
+          <span class="header-progress-text" id="progressText">0/0</span>
+        </div>
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="watched">Watched</button>
+          <button class="filter-btn" data-filter="unwatched">To Watch</button>
+        </div>
       </div>
     </div>
   </header>
@@ -254,8 +253,13 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="app.js"></script>
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      document.querySelector('.site-header')?.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
 </body>
 
 </html>
